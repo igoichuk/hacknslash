@@ -4,7 +4,8 @@
  */
 
 exports.index = function (req, res) {
-    res.render('index', { title: 'Express', year: new Date().getFullYear() });
+	res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    //res.render('index', { title: 'Express', year: new Date().getFullYear() });
 };
 
 exports.about = function (req, res) {

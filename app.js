@@ -1,12 +1,11 @@
 ﻿
-/**
- * Module dependencies.
- */
-
+// Module dependencies
 var express = require('express');
 var routes = require('./routes');
+var bidsApi = require('./routes/bids.js');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -28,9 +27,17 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
+// connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://localhost:27017/test');
+
 app.get('/', routes.index);
 app.get('/about', routes.about);
 app.get('/contact', routes.contact);
+
+// REST api
+app.get('/api/bids', bidsApi.getBids);
+app.post('/api/bids', bidsApi.createBid);
+app.delete('/api/bids/:bid_id', bidsApi.deleteBid);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

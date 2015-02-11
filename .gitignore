@@ -29,3 +29,6 @@ node_modules
 
 # no ASP.NET configs
 web.config
+
+# visual studio temp files
+.ntvs_analysis.dat

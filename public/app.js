@@ -5,7 +5,8 @@ function mainController($scope, $http) {
     $scope.formData = {};
 
     // when landing on the page, get all bids and show them
-    $http.get('/api/bids')
+	//$http.get('/api/bids?user=1')
+	$http.get('/api/bids')
         .success(function(data) {
             $scope.bids = data;
             console.log(data);

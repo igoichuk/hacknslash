@@ -5,5 +5,6 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Bid', {
 	name : String,
 	price : Number,
-	date: { type: Date, default: Date.now }
+	date: { type: Date, default: Date.now },
+	user: String
 });

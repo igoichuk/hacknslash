@@ -1,0 +1,83 @@
+﻿<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="bidsApp">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>{{ title }}</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        html                   { overflow-y:scroll; }
+        body                   { padding-top:50px; }
+        #bid-list              { margin-bottom:30px; }
+    </style>
+
+    <!-- SPELLS -->
+    <script src="javascripts/jquery-1.10.2.min.js"></script><!-- load jquery -->
+    <script src="javascripts/angular.min.js"></script><!-- load angular -->
+    <script src="app.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL bids -->
+<body ng-controller="mainController">
+    
+    <div class="container">
+        {% if !loggedIn %}
+        <div>
+            <p>Login or Register with:</p>
+
+            <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
+            <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
+            <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+            <a href="/auth/epam" class="btn btn-primary"><span class="fa fa-facebook"></span> Epam</a>
+        </div>
+        {% endif %}
+
+        {% raw %}
+        <!-- HEADER AND COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Bids list <span class="label label-info">{{ bids.length }}</span></h1>
+        </div>
+
+        <!-- BIDS LIST -->
+        <div id="bid-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <!-- LOOP OVER THE ITEMS IN $scope.bids -->
+                <div class="checkbox" ng-repeat="bid in bids">
+                    <label>
+                        <input type="checkbox" ng-click="deleteBid(bid._id)"> {{ bid.name }} {{ bid.price }}&nbsp;{{bid.date}}<span class="fa fa-user"></span>{{bid.user}}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FORM TO CREATE bids -->
+        <div id="bid-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="I want to sell.." ng-model="formData.name">
+						<input type="text" class="form-control input-sm text-center" placeholder="Price" ng-model="formData.price">
+                    </div>
+
+                    <!-- createBid -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createBid()">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    {% endraw %}
+</body>
+</html>

@@ -30,14 +30,23 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="config\auth.js" />
+    <Compile Include="config\passport.js" />
     <Compile Include="model\bid.js" />
+    <Compile Include="model\user.js" />
     <Compile Include="public\app.js" />
     <Compile Include="routes\bids.js" />
+    <Compile Include="routes\routes.js" />
     <Compile Include="server.js" />
-    <Compile Include="routes\index.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="public\index.html" />
+    <Content Include="public\fonts\fontawesome-webfont.eot" />
+    <Content Include="public\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\fonts\fontawesome-webfont.ttf" />
+    <Content Include="public\fonts\fontawesome-webfont.woff" />
+    <Content Include="public\fonts\fontawesome-webfont.woff2" />
+    <Content Include="public\fonts\FontAwesome.otf" />
+    <Content Include="views\index.html" />
     <Content Include="public\javascripts\bootstrap.js" />
     <Content Include="public\javascripts\bootstrap.min.js" />
     <Content Include="public\javascripts\jquery-1.10.2.intellisense.js" />
@@ -60,14 +69,19 @@
     <Content Include="public\javascripts\jquery-1.10.2.min.map" />
     <Content Include="public\stylesheets\bootstrap.css" />
     <Content Include="public\stylesheets\bootstrap.min.css" />
+    <Content Include="public\stylesheets\font-awesome.min.css" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="views\contact.jade" />
     <Content Include="views\about.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
+    <Content Include="views\login.html" />
+    <Content Include="views\profile.html" />
+    <Content Include="views\signup.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="model\" />
+    <Folder Include="config\" />
     <Folder Include="public\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\images\" />

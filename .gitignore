@@ -32,3 +32,9 @@ web.config
 
 # visual studio temp files
 .ntvs_analysis.dat
+
+#vstudio
+bin
+obj
+*.sln
+*.suo
